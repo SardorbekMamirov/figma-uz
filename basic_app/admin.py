@@ -7,30 +7,36 @@ from . import models
 admin.site.register(models.TokenModel),
 admin.site.register(models.Categories),
 admin.site.register(models.Products)
+admin.site.register(models.Site)
+admin.site.register(models.Zakaz)
+admin.site.register(models.Zakaz2)
+admin.site.register(models.Konsultatsiya)
+
 
 class CustomUserAdminModel(UserAdmin):
     # ordering = ('date_joined', 'is_superuser') 
     # search_fields = ('name', 'user_phone', 'viloyat') 
     # list_filter = ('name', 'user_phone', 'viloyat', 'tuman') 
     list_display = ('username', 'phone', 'is_superuser')
- 
-    fieldsets = (  
-        (None, {'fields': ('username', 'phone', 'password', )}), 
-        ('Permissions', {'fields': ('is_staff', 'is_active','is_superuser', 'groups', 'user_permissions')}), 
+
+    fieldsets = (
+        (None, {'fields': ('username', 'phone', 'password',)}),
+        ('Permissions', {'fields': ('is_staff', 'is_active', 'is_superuser', 'groups', 'user_permissions')}),
         # ('Group Permissions', { 
         #     'classes': ('collapse',), 
         #     'fields': ('groups', 'user_permissions',) 
         # }) 
-    ) 
- 
-    add_fieldsets = ( 
-        (None, { 
-            'classes': ('wide',), 
-            'fields': ( 
-                'username', 'phone', 'is_active', 'password1', 'password2',  
-                'is_staff') 
-        } 
-         ), 
-    ) 
+    )
 
-admin.site.register(models.MyUser,CustomUserAdminModel)
+    add_fieldsets = (
+        (None, {
+            'classes': ('wide',),
+            'fields': (
+                'username', 'phone', 'is_active', 'password1', 'password2',
+                'is_staff')
+        }
+         ),
+    )
+
+
+admin.site.register(models.MyUser, CustomUserAdminModel)

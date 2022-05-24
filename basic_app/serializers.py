@@ -40,3 +40,13 @@ class ZakazSerializer(serializers.ModelSerializer):
     class Meta:
         model=models.Zakaz
         fields='__all__'
+
+class Zakaz2Serializer(serializers.ModelSerializer):
+    class Meta:
+        model=models.Zakaz2
+        fields='__all__'
+
+class KonsultatsiyaSerializer(serializers.ModelSerializer):
+    class Meta:
+        model=models.Konsultatsiya
+        fields='__all__'

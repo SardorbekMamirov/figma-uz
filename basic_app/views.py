@@ -21,6 +21,8 @@ class CategoriesList(generics.ListCreateAPIView):
     queryset = models.Categories.objects.all()
     # authentication_classes = []
     # permission_classes = []
+    filter_backends = DjangoFilterBackend
+    filterset_fields=['c_name']
 
 
 class DetailCategory(generics.RetrieveUpdateDestroyAPIView):
@@ -31,6 +33,10 @@ class DetailCategory(generics.RetrieveUpdateDestroyAPIView):
 class ProductList(generics.ListCreateAPIView):
     serializer_class = serializers.ProductsSerializer
     queryset = models.Products.objects.all()
+    filter_backends = [filters.SearchFilter]
+    search_fields=['name']
+    # permission_classes = []
+    # authentication_classes = []
 
 
 class DetailProduct(generics.RetrieveUpdateDestroyAPIView):
@@ -41,6 +47,8 @@ class DetailProduct(generics.RetrieveUpdateDestroyAPIView):
 class ListCustomUser(generics.ListCreateAPIView):
     queryset = models.MyUser.objects.all()
     serializer_class = serializers.UserSerializer
+    permission_classes = []
+    authentication_classes = []
 
 
 class DetailCustomUser(generics.RetrieveUpdateDestroyAPIView):
@@ -52,6 +60,8 @@ class DetailCustomUser(generics.RetrieveUpdateDestroyAPIView):
 class SiteList(generics.ListCreateAPIView):
     queryset = models.Site.objects.all()
     serializer_class = serializers.SiteSerializer
+    # permission_classes = []
+    # authentication_classes = []
 
 
 class SiteDetail(generics.RetrieveUpdateDestroyAPIView):
@@ -62,8 +72,34 @@ class SiteDetail(generics.RetrieveUpdateDestroyAPIView):
 class ZakazList(generics.ListCreateAPIView):
     queryset = models.Zakaz.objects.all()
     serializer_class = serializers.ZakazSerializer
+    # permission_classes = []
+    # authentication_classes = []
 
 
 class ZakazDetail(generics.RetrieveUpdateDestroyAPIView):
-    queryset = models.Site.objects.all()
-    serializer_class = serializers.SiteSerializer    
+    queryset = models.Zakaz.objects.all()
+    serializer_class = serializers.Zakaz2Serializer
+
+
+class Zakaz2List(generics.ListCreateAPIView):
+    queryset = models.Zakaz2.objects.all()
+    serializer_class = serializers.Zakaz2Serializer
+    # permission_classes = []
+    # authentication_classes = []
+
+
+class Zakaz2Detail(generics.RetrieveUpdateDestroyAPIView):
+    queryset = models.Zakaz2.objects.all()
+    serializer_class = serializers.Zakaz2Serializer
+
+class KonsultatsiyaList(generics.ListCreateAPIView):
+    queryset = models.Konsultatsiya.objects.all()
+    serializer_class = serializers.KonsultatsiyaSerializer
+    # permission_classes = []
+    # authentication_classes = []
+
+class KonsultatsiyaDetail(generics.RetrieveUpdateDestroyAPIView):
+    queryset = models.Konsultatsiya.objects.all()
+    serializer_class = serializers.KonsultatsiyaSerializer
+    # permission_classes = []
+    # authentication_classes = []
